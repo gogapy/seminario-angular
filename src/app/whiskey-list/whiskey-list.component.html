@@ -1,0 +1,27 @@
+<h3>Whiskey list</h3>
+<table class="table text-center">
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Typre</th>
+      <th>Price</th>
+      <th>Stock</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let whiskey of whiskeys" [ngClass]="{'clearance': whiskey.clearance}">
+      <td><img class="img-thumbnail" [src]="whiskey.image" [alt]="whiskey.name" style="height: 100px;"></td>
+      <td>{{whiskey.name}}</td>
+      <td>{{whiskey.type}}</td>
+      <td>{{whiskey.price | currency}}</td>
+      <td><span class="badge text-bg-dark" *ngIf="whiskey.stock == 0">SIN STOCK</span></td>
+      <td>
+        <app-input-integer [(quantity)]="whiskey.quantity" [max]="whiskey.stock" *ngIf="whiskey.stock" (MaxReached)="maxReached($event)"></app-input-integer>
+      </td>
+      <td>
+        <button class="btn" (click)="addToCart(whiskey)">Add</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
