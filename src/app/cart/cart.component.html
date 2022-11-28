@@ -1,6 +1,15 @@
 <h3>Cart</h3>
-<ul>
-  <li *ngFor="let whiskey of (cartList$ | async)">
-    {{whiskey.name}}: {{whiskey.quantity}}
-  </li>
-</ul>
+<div>
+  <ul>
+    <li class="list-group-item" *ngFor="let whiskey of cartList">
+      {{whiskey.name}}: {{whiskey.quantity}} - {{whiskey.price * whiskey.quantity | currency}}
+    </li>
+  </ul>
+</div>
+<div>
+  <ul>
+    <li class="list-group-item total">
+      Total price: {{totalPrice() | currency}}
+    </li>
+  </ul>
+</div>

@@ -23,9 +23,11 @@ export class WhiskeyListComponent implements OnInit {
   }
 
   addToCart(whiskey: any) {
+    if(whiskey.quantity != 0) {
     this.cart.addToCart(whiskey);
     whiskey.stock -= whiskey.quantity;
     whiskey.quantity = 0;
+    }
   }
 
   maxReached(m: string) {

@@ -10,12 +10,31 @@ import { Whiskey } from '../whiskey-list/Whiskey';
 })
 export class CartComponent implements OnInit {
 
-  cartList$!: Observable<Whiskey[]>;
+  cartList: Whiskey[] = [];
+
   constructor(private cart: WhiskeyCartService) {
-    this.cartList$ = cart.cartList.asObservable();
+    // observe the complete cartList from it service
+    cart.cartList.subscribe(observable => {
+      this.cartList = observable;
+    });
   }
 
   ngOnInit(): void {
+  }
+
+  totalPrice(): number {
+    let totalPrice = 0;
+
+    if(this.cartList) {
+      for(const whiskey of this.cartList) {
+        totalPrice = totalPrice + (whiskey.price * whiskey.quantity);
+        // ex:
+        // 0 = 0 + (23 * 2) -\ *first add*
+        // 46 = 46 + (15 * 4) -\ *second add*
+        // total = $106.00 -\ *total*
+      }
+    }
+    return totalPrice;
   }
 
   ngOnDestroy(): void {
@@ -24,3 +43,9 @@ export class CartComponent implements OnInit {
 
   }
 }
+
+//         //\\
+//        //  \\
+//        | ֎ ֎\
+//        \  o /
+//         \__/

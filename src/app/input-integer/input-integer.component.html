@@ -3,7 +3,7 @@
     <div class="input-group-prepend">
       <button class="btn btn-sm" (click)="downQuantity()">-</button>
     </div>
-    <input class="form-control" type="text" [(ngModel)]="quantity">  <!-- (keyup)="changeQuantity($event, whiskey)" -->
+    <input class="form-control" type="number" [(ngModel)]="quantity">  <!-- (keyup)="changeQuantity($event, whiskey)" -->
     <div class="input-group-append">
       <button class="btn btn-sm" (click)="upQuantity()">+</button>
     </div>

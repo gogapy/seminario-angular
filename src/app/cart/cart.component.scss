@@ -1,0 +1,13 @@
+div ul li {
+  border: solid 1px #7a7a7a;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bolder;
+  background-color: #fcfcfc;
+  box-shadow: 0.4px 0.7px 0.5px rgba(0,0,0,0.3);
+}
+ul {
+  border-radius: 5px;
+}

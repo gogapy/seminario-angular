@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { WhiskeyCartService } from '../whiskey-cart.service';
 import { Whiskey } from '../whiskey-list/Whiskey';
 
 @Component({
@@ -36,7 +37,7 @@ export class InputIntegerComponent implements OnInit {
   }
 
   downQuantity(): void {
-    if(this.quantity > 1) {
+    if(this.quantity > 0) {
       this.quantity--;
       this.quantityChange.emit(this.quantity);
     }

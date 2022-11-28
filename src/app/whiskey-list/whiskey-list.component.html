@@ -4,9 +4,11 @@
     <tr>
       <th>Image</th>
       <th>Name</th>
-      <th>Typre</th>
+      <th>Type</th>
       <th>Price</th>
-      <th>Stock</th>
+      <!-- <th>Stock</th> -->
+      <th>quantity</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -15,12 +17,14 @@
       <td>{{whiskey.name}}</td>
       <td>{{whiskey.type}}</td>
       <td>{{whiskey.price | currency}}</td>
-      <td><span class="badge text-bg-dark" *ngIf="whiskey.stock == 0">SIN STOCK</span></td>
+      <!-- <td><span class="badge text-bg-dark" *ngIf="whiskey.stock == 0">SIN STOCK</span></td> -->
       <td>
-        <app-input-integer [(quantity)]="whiskey.quantity" [max]="whiskey.stock" *ngIf="whiskey.stock" (MaxReached)="maxReached($event)"></app-input-integer>
+        <app-input-integer class="input" [(quantity)]="whiskey.quantity" [max]="whiskey.stock" *ngIf="whiskey.stock" (MaxReached)="maxReached($event)"></app-input-integer>
+        <p *ngIf="whiskey.stock">Stock: {{whiskey.stock}}</p>
+        <p class="badge text-bg-dark" *ngIf="whiskey.stock == 0">Out of stock</p>
       </td>
       <td>
-        <button class="btn" (click)="addToCart(whiskey)">Add</button>
+        <button class="btn" *ngIf="whiskey.stock > 0" (click)="addToCart(whiskey)">Add</button>
       </td>
     </tr>
   </tbody>

@@ -1,3 +1,10 @@
 input {
   max-width: 50px;
 }
+
+// delete de arrows from de type number inputs ;)
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
